@@ -1,2 +1,2 @@
 # HRMS
-Java based web-based application
+Java based web application
