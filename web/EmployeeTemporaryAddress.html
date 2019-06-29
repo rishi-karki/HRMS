@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<div class="col-lg-5">
+<ng-form name="empTempAdd" class="myForm" required>
+    <fieldset class="temporary_address">
+
+        <legend>Temporary Address</legend>
+        <div class="form-group">
+            <input type="checkbox" ng-model="check.temporaryEqualsPermanent" ng-change="checkTemporaryEqualsPermanent()" ng-init="temporaryEqualsPermanent = false" ng-disabled="!permanent.tole">
+            <label>Check here if temporary and permanent address is same</label>
+
+        </div>
+        <div class="form-group">
+            <label>Zone</label>
+            <select ng-model="selectedTemporary.zone"  name="zone" class="form-control" ng-options="item as item.value for item in permanent.zone" ng-change="getTemporaryDistrict()" ng-disabled="check.temporaryEqualsPermanent" required>
+                <option value="" selected>--Select Zone--</option>
+
+
+            </select>
+            <div ng-if="empTempAdd.zone.$error && empTempAdd.zone.$dirty">
+                <div ng-if="empTempAdd.zone.$error.required"><span style="color:red">Please select your Zone first</span></div>
+                <div ng-if="empTempAdd.zone.$touched && empTempAdd.zone.$dirty"><span style="color:red"></span></div>
+            </div>
+
+        </div>
+        <div class="form-group" ng-if="!check.temporaryEqualsPermanent">
+            <label>District </label>
+            <select ng-model="selectedTemporary.district" name="district" class="form-control" ng-options="item as item.value for item in temporary.district" ng-change="getTemporaryVDC()" required  >
+                <option value="" selected>--Select District--</option>
+
+            </select>
+            <div ng-if="empTempAdd.district.$error && empTempAdd.district.$dirty">
+                <div ng-if="empTempAdd.district.$error.required"><span style="color:red">Please select your district</span></div>
+                <div ng-if="empTempAdd.district.$touched && empTempAdd.district.$dirty"><span style="color:red"></span></div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="check.temporaryEqualsPermanent">
+            <label>District </label>
+            <select ng-model="selectedTemporary.district" class="form-control"  ng-options="item as item.value for item in permanent.district" ng-disabled="check.temporaryEqualsPermanent" required >
+                <option value="" selected>--Select District--</option>
+
+            </select>
+
+        </div>
+        <div class="form-group" ng-if="!check.temporaryEqualsPermanent">
+            <label>Municipality/ VDC </label>
+            <select  ng-model="selectedTemporary.VDC"  name="vdc" ng-change="enableTole()" class="form-control" ng-options="item as item.value for item in temporary.vdc" required> //ng-disabled="temporaryEqualsPermanent"
+                <option value="" selected >--Select VDC/Municipality--</option>
+
+            </select>
+            <div ng-if="empTempAdd.vdc.$error && empTempAdd.vdc.$dirty">
+                <div ng-if="empTempAdd.vdc.$error.required"><span style="color:red">Please select your Municipality/VDC</span></div>
+                <div ng-if="empTempAdd.vdc.$touched && empTempAdd.vdc.$dirty"><span style="color:red"></span></div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="check.temporaryEqualsPermanent">
+            <label>Municipality/ VDC </label>
+            <select ng-model="selectedTemporary.VDC"  ng-change="enableTole()" class="form-control" ng-options="item as item.value for item in permanent.vdc"  ng-disabled="check.temporaryEqualsPermanent" required > //ng-disabled="temporaryEqualsPermanent"
+                <option value="" selected >--Select VDC/Municipality--</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label> Tole</label>
+            <input type="text" class="form-control" name="tole" placeholder="Tole" ng-model="temporary.tole" ng-disabled="!selectedTemporary.VDC || check.temporaryEqualsPermanent" ng-pattern="/^[a-zA-Z ]{1,25}$/" required>
+            <div ng-if="empTempAdd.tole.$error && empTempAdd.tole.$dirty">
+                <div ng-if="empTempAdd.tole.$error.required"><span style="color:red">This field is required</span></div>
+                <div ng-if="empTempAdd.tole.$error.pattern"><span style="color:red">Invalid Tole Name</span></div>
+            </div>
+
+        </div>
+
+        <!--<input type="button" value="Previous" class="navigation-btn" ng-click="temporaryAddressPrevious()">-->
+        <!--<input type="button" value="Next" class="navigation-btn" ng-click="temporaryAddressNext()">-->
+        <ul class="pager">
+            <li class="previous" class="navigation-btn"><a href="" ng-click="temporaryAddressPrevious()">Previous</a></li>
+            <li class="next" class="navigation-btn"><a href="" ng-click="temporaryAddressNext()">Next</a></li>
+        </ul>
+    </fieldset>
+</ng-form>
+</div>

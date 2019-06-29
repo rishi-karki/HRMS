@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<div class="col-lg-5">
+<ng-form name="empPermanentAdd" class="myForm" required>
+    <div>
+    <fieldset class="permanent_address">
+
+        <legend>Permanent Address</legend>
+        <div class="form-group">
+            <label>Zone</label>
+            <select ng-model="selectedPermanent.zone" name="zone" class="form-control" ng-change="getPermanentDistrict()" ng-options="item as item.value for item in permanent.zone" required>
+                <option value="" selected>-- Select Zone --</option>
+                <!--<option value="bagmati" >Bagmati</option>-->
+
+            </select>
+            <div ng-if="empPermanentAdd.zone.$error && empPermanentAdd.zone.$dirty">
+                <div ng-if="empPermanentAdd.zone.$error.required"><span style="color:red">Please select your Zone first</span></div>
+                <div ng-if="empPermanentAdd.zone.$touched && empPermanentAdd.zone.$dirty"><span style="color:red"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>District </label>
+            <select ng-model="selectedPermanent.district" name="district" class="form-control" ng-change="getPermanentVDC()" ng-options="item as item.value for item in permanent.district" required> <!-- -->
+                <option value="" selected >-- Select District --</option>
+                <!--<option value="kathmandu" >Kathmandu</option>-->
+
+            </select>
+            <div ng-if="empPermanentAdd.district.$error && empPermanentAdd.district.$dirty">
+                <div ng-if="empPermanentAdd.district.$error.required"><span style="color:red">Please select your district</span></div>
+                <div ng-if="empPermanentAdd.district.$touched && empPermanentAdd.district.$dirty"><span style="color:red"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Municipality/ VDC</label>
+            <select ng-model="selectedPermanent.VDC"  name="vdc" class="form-control" ng-change="enableTole()" ng-options="item as item.value for item in permanent.vdc" required>
+                <option value="" selected >-- Select VDC/Municipality --</option>
+            </select>
+            <div ng-if="empPermanentAdd.vdc.$error && empPermanentAdd.vdc.$dirty">
+                <div ng-if="empPermanentAdd.vdc.$error.required"><span style="color:red">Please select your Municipality/VDC</span></div>
+                <div ng-if="empPermanentAdd.vdc.$touched && empPermanentAdd.vdc.$dirty"><span style="color:red"></span></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label> Tole</label>
+            <input type="text" class="form-control" name="tole" placeholder="Tole" ng-model="permanent.tole" ng-disabled="!selectedPermanent.VDC" ng-pattern="/^[a-zA-Z ]{1,25}$/" required>
+            <div ng-if="empPermanentAdd.tole.$error && empPermanentAdd.tole.$dirty">
+                <div ng-if="empPermanentAdd.tole.$error.required"><span style="color:red">This field is required</span></div>
+                <div ng-if="empPermanentAdd.tole.$error.pattern"><span style="color:red">Invalid Tole Name</span></div>
+            </div>
+        </div>
+        <!--<input type="button" value="Previous" class="navigation-btn" ng-click="permanentAddressPrevious()">-->
+        <!--<input type="button" value="Next" class="navigation-btn" ng-click="permanentAddressNext()">-->
+        <ul class="pager">
+            <li class="previous" class="navigation-btn"><a href="" ng-click="permanentAddressPrevious()">Previous</a></li>
+            <li class="next" class="navigation-btn"><a href="" ng-click="permanentAddressNext()">Next</a></li>
+        </ul>
+        <!--{{empGeneralDet.$invalid}}-->
+    </fieldset>
+
+</div>
+</ng-form>
+</div>

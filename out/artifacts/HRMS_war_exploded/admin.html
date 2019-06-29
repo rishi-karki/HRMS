@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<meta charset="utf-8">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+    <!--  <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    <!--  <meta name="description" content="">
+     <meta name="author" content=""> -->
+
+    <title>Home</title>
+    <meta name="viewport" content="user-scalable = no">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <script>
+        function startTime() {
+            var today = new Date();
+            var hr = today.getHours();
+            var h = (hr + 24 - 2) % 24;
+            var m = today.getMinutes();
+            m = checkTime(m);
+            var mid = "AM";
+            if (h == 0) {
+                h = 12;
+            }
+            else if (h >= 12) {
+                h = h % 12;
+                mid = "PM";
+            }
+            document.getElementById('time').innerHTML =
+                h + 2 + ":" + m + " " + mid;
+            var t = setTimeout(startTime, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }
+            ;
+            return i;
+        }
+    </script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.2/restangular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/states.js"></script>
+    <script type="text/javascript" src="controllers/interview.js"></script>
+    <script type="text/javascript" src="controllers/employee.js"></script>
+    <script type="text/javascript" src="controllers/department.js"></script>
+    <script type="text/javascript" src="controllers/qualification.js"></script>
+    <script type="text/javascript" src="js/adminController.js"></script>
+    <script type="text/javascript" src="js/customServices.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.4/ng-table.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-table/1.0.0-beta.4/ng-table.min.js"></script>
+
+</head>
+<body onload="startTime()" ng-app="adminApp" ng-controller="adminController" class="bodyStyle"
+      style="background-color: #e9e9e9;">
+
+<div id="wrapper" style="background-color:#e9e9e9;">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="admin.html">HRMS</a>
+        </div>
+
+        <div class="navbar-brand" style="color:white; margin-left: 40%">
+            <div id="time"></div>
+        </div>
+
+        <div class="navbar-header" style="float: right;">
+            <li><a class="navbar-brand" data-toggle="dropdown"><i class="fa fa-tasks"
+                                                                  style="margin-right: 5px; cursor:pointer;"> </i> admin</a>
+                <ul class="dropdown-menu" style="margin-left:88%;">
+                    <li><a href="#">View profile<span class="glyphicon glyphicon-user pull-right"></span></a></li>
+                    <li><a href="#">Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                    <li class="divider"></li>
+                    <li><a href="index.html">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+        <!-- Sidebar -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav navbar-collapse">
+
+                <ul class="nav" id="side-menu">
+                    <li class="sidebar-search">
+                        <div class="input-group custom-search-form">
+                            <input list="tasks" name="action" class="form-control" placeholder="Search...">
+                            <datalist id="tasks">
+                                <option value="Search Employee">
+                                <option value="Add Employee">
+                                <option value="Update/View Employee">
+                                <option value="Add Department">
+                                <option value="Update/View Department">
+                            </datalist>
+                            <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                        </div>
+                    </li>
+                    <li>
+                        <a ui-sref="employeeFinder()" class="active"><i class="fa fa-users fa-fw" ></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-user fa-fw" ></i> Employee <span class="fa arrow" ></span></a>
+                        <ul class="nav nav-first-level">
+
+                            <li>
+                                <a ui-sref="addEmployee()" > Add Employee <i style="float: right;" class="fa fa-user-plus fa-fw"></i></a>
+                            </li>
+                            <li>
+                                <a ui-sref="viewEmployee.list()" > View or Update Employee <i style="float: right;" class="fa fa-address-card-o"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-building fa-fw" ></i>Departments <span class="fa arrow" ></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a ui-sref="addDepartment()" > Add Department <i style="float: right;" class="fa fa-plus"></i></a>
+                            </li>
+                            <li>
+                                <a ui-sref="viewDepartmentList()" > View or Update Department <i style="float: right;" class="fa fa-window-restore"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-list-alt fa-fw" ></i>Interviews<span class="fa arrow" ></span></a>
+                        <ul class="nav nav-second-level">
+
+                            <li>
+                                <a ui-sref="interviewSchedule()" > Add Interview <i style="float: right;" class="fa fa-calendar-plus-o"></i></a>
+                            </li>
+                            <li>
+                                <a ui-sref="viewInterviewList()" > View or Update Interviews <i style="float: right;" class="fa fa-calendar-check-o"></i></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#"><i style="float:left; margin-right:4px;" class="fa fa-plane"></i> Leave Management </a>
+                    </li>
+                    <p> <img src="esewa-logo.png" alt="eSewa Fonepay" style="width:120px;height:80px;"><p>
+                    <p> <a> Copyright &copy;  2017 Rishi Karki.</a></p><p><a>All rights reserved.</a></p>
+                </ul>
+            </div>
+        </div>
+    </nav>0
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            <div>
+                <ui-view/>
+            </div>
+
+            <!-- ... Your content goes here ... -->
+
+        </div>
+    </div>
+
+</div>
+
+<!-- jQuery -->
+<script src="js/jquery.min.js"></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Metis Menu Plugin JavaScript -->
+<script src="js/metisMenu.min.js"></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="js/startmin.js"></script>
+
+</body>
+</html>

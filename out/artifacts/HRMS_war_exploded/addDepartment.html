@@ -1,0 +1,42 @@
+<div ng-controller="addDepartmentController">
+    <h1 class="well well-sm" style="margin-top: 30px;" align="center">Add Department</h1>
+    <div class="col-md-4">
+        <form name="theForm">
+            <div class="form-group">
+                <label for="deptname">Department Name</label>
+                <input type="text" class="form-control" id="deptname" placeholder="Name of the department"
+                       name="deptname" ng-model="department.deptName" ng-pattern="/^[a-zA-Z]{1,25}([0-9]{2})?$/"
+                       required>
+                <div ng-if="theForm.deptname.$error && theForm.deptname.$dirty">
+                    <div ng-if="theForm.deptname.$error.required"><span style="color:red">This field is required</span>
+                    </div>
+                    <div ng-if="theForm.deptname.$error.pattern"><span style="color:red">Please specify the appropriate department name</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Manager</label>
+                <select ng-disabled="theForm.deptname.$invalid" ng-model="department.manager" name="manager"
+                        class="form-control" ng-options="item.id as item.fullName for item in employees.detail"
+                        required>
+                    <option value="" selected>--Select Manager --</option>
+                </select>
+                <div ng-if="theForm.manager.$error && theForm.manager.$dirty">
+                    <div ng-if="theForm.manager.$error.required"><span style="color:red">This field is required</span>
+                    </div>
+                    <div ng-if="theForm.manager.$error.pattern"><span style="color:red">Invalid Interviewer Name</span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Organization</label>
+                <input type="text" class="form-control" name="organization" value="eSewa Fonepay Pvt. Ltd." disabled>
+            </div>
+            <div style="margin-left: 10px;">
+                <input type="button" value="Add Department" class="btn" ng-disabled="theForm.$invalid"
+                       ng-click="insertDept()">
+
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+
+<div  class="general_details">
+    <ng-form name="empGeneralDet" class="myForm" required>
+        <div class="col-lg-12">
+        <fieldset>
+
+            <!--<div class="general_details" xmlns="http://www.w3.org/1999/html">-->
+
+
+            <legend>General details</legend>
+            <div class="form-group">
+                <label >First Name</label>
+                <input type="text" class="form-control" name="fname" placeholder="First Name" ng-model="employeeDetails.fname" ng-pattern="/^[a-zA-Z ]{1,25}$/" required />
+                <div ng-if="empGeneralDet.fname.$error && empGeneralDet.fname.$dirty">
+                    <div ng-if="empGeneralDet.fname.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.fname.$error.pattern"><span style="color:red">Invalid First Name</span></div>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label >Last Name</label>
+                <input type="text" class="form-control"  name="lname" placeholder="Last Name" ng-model="employeeDetails.lname" ng-pattern="/^[a-zA-Z ]{1,25}$/" required />
+                <div ng-if="empGeneralDet.lname.$error && empGeneralDet.lname.$dirty">
+                    <div ng-if="empGeneralDet.lname.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.lname.$error.pattern"><span style="color:red">Invalid Last Name</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label >Gender</label> <br />
+                <input type="radio" name="gender" value="Male" ng-model="employeeDetails.gender" required>  Male
+                <input type="radio" name="gender" value="Female" ng-model="employeeDetails.gender" required>  Female
+                <div ng-if="empGeneralDet.gender.$error && empGeneralDet.gender.$dirty">
+                    <div ng-if="empGeneralDet.gender.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.gender.$touched && empGeneralDet.gender.$dirty"><span style="color:red"></span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label >Date of Birth </label>
+                <input type="date" class="form-control"  name="dob" ng-model="employeeDetails.dob" max="{{'2001-01-01' |date: 'yyyy-MM-dd'}}" min="{{'1947-01-01' |date: 'yyyy-MM-dd'}}"   required>
+                <div ng-if="empGeneralDet.dob.$error && empGeneralDet.dob.$dirty">
+                    <div ng-if="empGeneralDet.dob.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.dob.$touched && empGeneralDet.dob.$dirty"><span style="color:red"></span></div>
+                    <div ng-if="empGeneralDet.dob.$error.max"><span style="color:red">Select valid date</span></div>
+                    <div ng-if="empGeneralDet.dob.$error.min"><span style="color:red">Select valid date</span></div>
+                </div>
+            </div>
+
+
+            <label> Phone Number </label>
+            <input type="text" class="form-control" ngminlength="10" ng maxlength="15" name="number" placeholder="(+977-)9*********" ng-model="employeeDetails.phNumber" ng-pattern="/^(\+977\-)?9[7-8][0-9]{8}$/" required>
+            <div ng-if="empGeneralDet.number.$error && empGeneralDet.number.$dirty">
+                <div ng-if="empGeneralDet.number.$error.required"><span style="color:red">This field is required</span></div>
+                <div ng-if="empGeneralDet.number.$error.pattern"><span style="color:red">Must be a valid 10 digit phone number</span></div>
+            </div>
+            <!--//1. phone format /^9[87][0-9]{8}$/-->
+            <!--//2. phone format /^(\+977\-)?9[7-8][0-9]{8}$/-->
+
+            <div class="form-group">
+                <label> Email address</label>
+                <input type="email" class="form-control" name="email" placeholder="Email address" ng-model="employeeDetails.email" required>
+                <div ng-if="empGeneralDet.email.$error && empGeneralDet.email.$dirty">
+                    <div ng-if="empGeneralDet.email.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.email.$error.email"><span style="color:red">Invalid email address</span></div>
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label>Blood Group</label>
+                <select ng-model="employeeDetails.bloodGroup"  name="bloodGroup" class="form-control" required>
+                    <option value="" selected>--Select Blood Group --</option>
+                    <option value="A+ve" >A +ve</option>
+                    <option value="A-ve" >A -ve</option>
+                    <option value="B+ve" >B +ve</option>
+                    <option value="B-ve" >B -ve</option>
+                    <option value="AB+ve" >AB +ve</option>
+                    <option value="AB-ve" >AB -ve</option>
+                    <option value="O+ve" >O +ve</option>
+                    <option value="O+ve" >O -ve</option>
+                </select>
+                <div ng-if="empGeneralDet.bloodGroup.$error && empGeneralDet.bloodGroup.$dirty">
+                    <div ng-if="empGeneralDet.bloodGroup.$error.required"><span style="color:red">Choose one option</span></div>
+                    <div ng-if="empGeneralDet.bloodGroup.$touched && empGeneralDet.bloodGroup.$dirty"><span style="color:red"></span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label >Hire Date</label>
+                <input type="date" class="form-control" name="hireDate" max="{{currentDate |date: 'yyyy-MM-dd'}}" min="{{'2001-01-01' |date: 'yyyy-MM-dd'}}"  ng-model="employeeDetails.hireDate" required>
+                <div ng-if="empGeneralDet.hireDate.$error && empGeneralDet.hireDate.$dirty">
+                    <div ng-if="empGeneralDet.hireDate.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="empGeneralDet.hireDate.$touched && empGeneralDet.hireDate.$dirty"><span style="color:red"></span></div>
+                    <div ng-if="empGeneralDet.hireDate.$error.max"><span style="color:red">Select valid date</span></div>
+                    <div ng-if="empGeneralDet.hireDate.$error.min"><span style="color:red">Select valid date</span></div>
+                </div>
+            </div>
+            <!--<input type="button" value="Next" class="navigation-btn" ng-click="generalDetailsNext()">-->
+            <ul class="pager">
+                <li class="next" class="navigation-btn"><a href="" name="next" ng-click="generalDetailsNext()">Next</a></li>
+            </ul>
+
+        </fieldset>
+        </div>
+    </ng-form>
+    <!--{{empGeneralDet.$invalid}}-->
+</div>

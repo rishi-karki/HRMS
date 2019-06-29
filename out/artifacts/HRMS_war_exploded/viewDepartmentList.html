@@ -1,0 +1,92 @@
+<style>
+    input {
+        width: 100%;
+    }
+</style>
+<script>
+    angular.module('controllerAsExample', [])
+        .controller('settingsController1', function ($scope) {
+            $scope.jobs = [{title: ''}]
+            $scope.addJob = function () {
+                console.log($scope.jobs);
+                $scope.jobs.push({title: ''})
+            }
+        });
+</script>
+    <div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="well well-sm" style="margin-top: 30px;" align="center">View Department</h1>
+            </div>
+        </div>
+        <div>
+            <table ng-table="tableParams" class="table table-bordered table-stripped" show-filter="true">
+                <tr ng-repeat="department in $data">
+                    <td title="'Department Name'" filter="{ deptName: 'text'}" sortable="'deptName'">
+                        <span ng-if="department.editable == false" ng-dblclick="enableEdit(department)">{{department.department_name}}</span>
+                        <input type="text" ng-model="department.department_name"
+                               placeholder="{{department.department_name}}" ng-if="department.editable == true"
+                               ng-blur="disableEdit(department)"/>
+                    </td>
+
+                    <td title="'Manager'" filter="{ managerName: 'text'}" sortable="'managerName'">
+                        <span ng-if="department.editable == false" ng-dblclick="enableEdit(department)">{{department.managerName}}</span>
+                        <select ng-if="department.editable==true" ng-model="manager.name"
+                                ng-options="item.fullName as item.fullName for item in employees.detail"
+                                ng-blur="disableEdit(department)"> </select>
+                        <!--<input type="text" ng-model="department.managerName" placeholder="{{department.managerName}}" ng-if="department.editable == true" ng-blur="disableEdit(department)" />-->
+                    </td>
+
+                    <td title="'Status'" filter="{ department_status: 'text'}" sortable="'department_status'">
+                        <input type="button" class="btn btn-danger" ng-model="department.departmentStatusName" value="Change status"
+                               ng-if="department.editable == true" ng-click="disableEdit(department)"/>
+                        <span ng-if="department.editable == false" ng-dblclick="enableEdit(department)">{{department.departmentStatusName}}</span>
+                        <!--<select ng-if="department.editable==true" ng-model="department.status_id" ng-options="item.id as item.status for item in employees.status" ng-blur="disableEdit(department)"> </select>-->
+                        <!--<input type="text" ng-model="department.department_status" placeholder="{{department.department_status}}" ng-if="department.editable == true" ng-blur="disableEdit(department)" />-->
+                    </td>
+                    <td>
+                        <input type="button" value="Add Job(s)" class="btn btn-info" data-toggle="modal"
+                               data-target="#myModal">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog" style="z-index: 1040;">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Jobs in {{$scope.department.name}} Department</h4>
+                </div>
+                <div class="modal-body">
+                    <table style="width: 100%;">
+                        <tr ng-repeat="job in jobs">
+                            <td>
+                                <div class="form-group">
+                                    <label>Job Title {{job.title}}</label>
+                                    <input type="text" class="form-control" id="jobTitle" placeholder="Job Title"
+                                           name="jobTitle" ng-model="job.title"
+                                           required>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="addJob()" style="float: left;">Add
+                        Another Job
+                    </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Submit</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{{department.department_name}}

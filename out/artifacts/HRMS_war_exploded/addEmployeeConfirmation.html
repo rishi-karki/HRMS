@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<div>
+    <div class="form-group">
+        <table>
+            <tr>
+                <td><label>First Name</label></td>
+                <td>: {{employeeDetails.fname}}</td>
+
+            </tr>
+            <tr>
+                <td><label>Last Name</label></td>
+                <td>: {{employeeDetails.lname}}</td>
+            </tr>
+            <tr>
+                <td><label>Gender</label> </td>
+                <td>: {{employeeDetails.gender}}</td>
+            </tr>
+            <tr>
+                <td><label>Date of Birth</label></td>
+                <td>: {{employeeDetails.dob|date:'yyyy-MM-dd'}} </td>
+            </tr>
+            <tr>
+                <td><label>Phone Number</label></td>
+                <td>:{{employeeDetails.phNumber}} </td>
+            </tr>
+            <tr>
+                <td><label>Email</label></td>
+                <td>:{{employeeDetails.email}} </td>
+            </tr>
+            <tr>
+                <td><label>Blood Group</label></td>
+                <td>: {{employeeDetails.bloodGroup}}  </td>
+            </tr>
+            <tr>
+                <td><label>Hire Date</label></td>
+                <td>: {{employeeDetails.hireDate|date:'yyyy-MM-dd'}} </td>
+            </tr>
+            <tr>
+                <td><label>Permanent Address</label></td>
+                <td>: {{selectedPermanent.zone.value}}, {{selectedPermanent.district.value}}, {{selectedPermanent.VDC.value}}, {{permanent.tole}}</td>
+            </tr>
+            <tr>
+                <td><label>Temporary Address</label></td>
+                <td>: {{selectedTemporary.zone.value}}. {{selectedTemporary.district.value}}, {{selectedTemporary.VDC.value}}, {{temporary.tole}}</td>
+            </tr>
+            <tr>
+               <td></td> <ul class="pager">
+                    <li class="previous" class="navigation-btn"><a href="" ng-click="confirmationPrevious()">Previous</a></li>
+            </ul></tr></td>
+            </tr>
+        </table>
+        <input type="button" value="Submit" ng-disabled="flagInvalid" class="navigation-btn" ng-click="addEmployee()" style="float:right; padding: 15px 32px;">
+    </div>
+</div>

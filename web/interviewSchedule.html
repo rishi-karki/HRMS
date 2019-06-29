@@ -1,0 +1,71 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">Add Interview Schedule</h1>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <form name="interviewSchedForm">
+            <div class="form-group">
+                <label>Interviewee Name</label>
+                <input type="text" class="form-control" name="interviewee" placeholder="Full name of the interviewee" ng-model="interviewData.interviewee" ng-pattern="/^[a-zA-Z ]{1,25}$/" required>
+                <div ng-if="interviewSchedForm.interviewee.$error && interviewSchedForm.interviewee.$dirty">
+                    <div ng-if="interviewSchedForm.interviewee.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="interviewSchedForm.interviewee.$error.pattern"><span style="color:red">Invalid Interviewee Name</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interviewer Name</label>
+                <input type="text" class="form-control" ng-disabled="interviewSchedForm.interviewee.$invalid" name="interviewer" placeholder="Full name of the interviewer" ng-model="interviewData.interviewer" ng-pattern="/^[a-zA-Z ]{1,25}$/" required>
+                <div ng-if="interviewSchedForm.interviewer.$error && interviewSchedForm.interviewer.$dirty">
+                    <div ng-if="interviewSchedForm.interviewer.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="interviewSchedForm.interviewer.$error.pattern"><span style="color:red">Invalid Interviewer Name</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interview Date</label>
+                <input type="date" class="form-control" ng-disabled="interviewSchedForm.interviewer.$invalid" name="interviewDate" ng-model="date" min="{{currentDate |date: 'yyyy-MM-dd'}}" max="{{'2018-01-01' |date: 'yyyy-MM-dd'}}" required>
+                <div ng-if="interviewSchedForm.interviewDate.$error && interviewSchedForm.interviewDate.$dirty">
+                    <div ng-if="interviewSchedForm.interviewDate.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="interviewSchedForm.interviewDate.$touched && interviewSchedForm.interviewDate.$dirty"><span style="color:red"></span></div>
+                    <div ng-if="interviewSchedForm.interviewDate.$error.max"><span style="color:red">Select valid date</span></div>
+                    <div ng-if="interviewSchedForm.interviewDate.$error.min"><span style="color:red">Select valid date</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interview Time</label>
+                <input type="time" class="form-control" ng-disabled="interviewSchedForm.interviewDate.$invalid" name="interviewTime" ng-model="time" required>
+            </div>
+            <div class="form-group">
+                <label>Interview Purpose/Position</label>
+                <input type="text" class="form-control" ng-disabled="interviewSchedForm.interviewTime.$invalid" name="intervieweePurpose" placeholder="Interview purpose or position" ng-model="interviewData.purpose" ng-pattern="/^[a-zA-Z ]{1,25}$/" required>
+                <div ng-if="interviewSchedForm.purpose.$error && interviewSchedForm.purpose.$dirty">
+                    <div ng-if="interviewSchedForm.purpose.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="interviewSchedForm.purpose.$error.pattern"><span style="color:red">Invalid Purpose/Position</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interviewee Email</label>
+                <input type="email" class="form-control" ng-disabled="interviewSchedForm.intervieweePurpose.$invalid" name="intervieweeEmail" placeholder="Email address of interviewee" ng-model="interviewData.email">
+                <div ng-if="interviewSchedForm.intervieweeEmail.$error && interviewSchedForm.intervieweeEmail.$dirty">
+                    <div ng-if="interviewSchedForm.intervieweeEmail.$error.email"><span style="color:red">Invalid email address</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Interview Phone</label>
+                <input type="text" ngminlength="10" ng maxlength="15" class="form-control" ng-disabled="interviewSchedForm.intervieweePurpose.$invalid" name="phone" placeholder="(+977-)9*********" ng-model="interviewData.phone" ng-pattern="/^(\+977\-)?9[7-8][0-9]{8}$/" required>
+                <div ng-if="interviewSchedForm.phone.$error && interviewSchedForm.phone.$dirty">
+                    <div ng-if="interviewSchedForm.phone.$error.required"><span style="color:red">This field is required</span></div>
+                    <div ng-if="interviewSchedForm.phone.$error.pattern"><span style="color:red">Must be a valid 10 digit phone number</span></div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Description</label>
+                    <textarea class="form-control" rows="5" id="comment" ng-disabled="interviewSchedForm.phone.$invalid"></textarea>
+            </div>
+            <div style="margin-left: 10px;">
+                <input type="submit" value="Add Interview" ng-click="insertInterview()" ng-disabled="interviewSchedForm.$invalid"class="btn">
+            </div>
+        </form>
+    </div>
+</div>

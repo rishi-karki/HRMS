@@ -1,0 +1,296 @@
+<!--Stylesheet for flipping photo-->
+<style>
+    .card-container {
+        cursor: pointer;
+        height: 150px;
+        position: relative;
+        width: 100%;
+    }
+
+    .card {
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: all 1s ease-in-out;
+        width: 100%;
+    }
+
+    .card:hover {
+        transform: rotateY(180deg);
+    }
+
+    .card .side {
+        backface-visibility: hidden;
+        height: 100%;
+        position: absolute;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    .card .back {
+        background: #eaeaed;
+        color: #0087cc;
+        line-height: 150px;
+        text-align: center;
+        transform: rotateY(180deg);
+    }
+    .ptext{
+        visibility: hidden;
+    }
+    .viewingArea:hover .ptext{
+        visibility: visible;
+    }
+</style>
+
+<!-- The Grid -->
+<div class="w3-row-padding">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">Profile of {{selectedEmployee.fname}}
+                {{selectedEmployee.lname}}</h1>
+        </div>
+    </div>
+    <!-- Left Column -->
+    <div class="w3-third">
+
+        <div class="w3-white w3-text-grey w3-card-4">
+            <div class="w3-display-container" style="width: 100%;">
+                <div class="card-container">
+                    <div class="card">
+                        <div class="side"><img
+                                src="http://wwwimage1.cbsstatic.com/thumbnails/photos/w370/gallery/matt2.jpg"
+                                height="120%" width="100%" alt="Profile Picture"></div>
+                        <div class="side back"><a href="">Edit Profile Picture</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w3-container">
+                <h1>{{selectedEmployee.fname}} {{selectedEmployee.lname}}</h1>
+                <p><i class="fa fa-briefcase fa-fw w3-margin-right w3-large w3-text-teal"></i>AngularJS Developer
+                </p>
+                <p><i class="fa fa-home fa-fw w3-margin-right w3-large w3-text-teal"></i>{{selectedEmployee.tempAddress}}
+                </p>
+                <p><i class="fa fa-envelope fa-fw w3-margin-right w3-large w3-text-teal"></i>{{selectedEmployee.email}}
+                </p>
+                <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i>{{selectedEmployee.phNumber}}
+                </p>
+                <hr>
+
+                <table>
+                    <tr>
+                        <th colspan="2" align="left">Personal Details</th>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td>{{selectedEmployee.gender}}</td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth:</td>
+                        <td>{{selectedEmployee.dob}}</td>
+                    </tr>
+                    <tr>
+                        <td>Blood Group:</td>
+                        <td>{{selectedEmployee.bloodGroup}}</td>
+                    </tr>
+                    <tr>
+                        <td>Permanent Address:</td>
+                        <td>{{selectedEmployee.permanentAddress}}</td>
+                    </tr>
+                </table>
+                <hr>
+
+                <table>
+                    <tr>
+                        <th align="left">Languages Known</th>
+                    </tr>
+                    <tr>
+                        <td>English</td>
+                    </tr>
+                    <tr>
+                        <td>Hindi</td>
+                    </tr>
+                    <tr>
+                        <td>Nepali</td>
+                    </tr>
+                </table>
+                <br>
+            </div>
+        </div>
+        <br>
+
+        <!-- End Left Column -->
+    </div>
+
+    <!-- Right Column -->
+    <div class="w3-twothird">
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i
+                    class="fa fa-address-card-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Company Details <i
+                    style="float: right;" class="fa fa-pencil-square-o"></i></h2>
+            <table>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Deparmement: </b></h5></b></th>
+                    <td>Development</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Work Shift: </b></h5></th>
+                    <td>Day</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Salary: </b></h5></th>
+                    <td>Rs. 50,000</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Bank: </b></h5></th>
+                    <td>Global IME Bank</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+
+        <div class="w3-container w3-card-2 w3-white">
+            <h2 class="w3-text-grey w3-padding-10"><i
+                    class="fa fa-graduation-cap fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Education
+                {{viewQualification.employee}} <a href="" data-toggle="modal" data-target="#myModal"><i
+                        class="fa fa-plus" style="float: right; margin-right: 30px;"></i></a></h2>
+            <!--Add Qualification form-->
+            <div class="modal fade text-center" id="myModal" data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog" style="z-index: 1040;">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Educational Qualification</h4>
+                        </div>
+                        <div class="modal-body">
+                            Level
+                            <input type="text" class="form-control" placeholder="Level of study" list="level" required
+                                   ng-model="qualificationData.level">
+                            <datalist id="level">
+                                <option ng-repeat="x in level" value="{{x}}">
+                            </datalist>
+                            <div class="form-group">
+                                Course
+                                <input type="text" class="form-control" ng-model="qualificationData.course"
+                                       placeholder="Course of study" list="course" required>
+                                <datalist id="course">
+                                    <option ng-repeat="y in course| filter: qualificationData.level" value="{{y.name}}">
+                                        {{y.level}}
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                University or Board
+                                <input type="text" class="form-control" ng-model="qualificationData.university"
+                                       placeholder="Affiliated board or university" list="university" required>
+                                <datalist id="university">
+                                    <option ng-repeat="z in university" value="{{z}}">
+                                </datalist>
+                            </div>
+                            <div class="form-group">
+                                Grade or Percentage
+                                <input type="number" ng-model="qualificationData.grade" step="0.01" min="1" max='100'
+                                       class="form-control" id="grade" placeholder="Grade or percentage acquired"
+                                       ng-maxLength='5' required>
+                            </div>
+                            <div class="form-group">
+                                Start Date
+                                <input type="date" class="form-control" ng-model="date.start" id="start" name="start"
+                                       max="{{date| date:'yyyy-MM-dd'}}" required>
+                            </div>
+                            <div class="form-group">
+                                End Date
+                                <input type="date" class="form-control" ng-model="date.end" id="end" name="end"
+                                       style="float:left;" required>
+                                <div class="errormsg" ng-cloak ng-if="end <= start">End date should be greater than
+                                    starting date
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" value="{{selectedEmployee.id}}">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" ng-click="insertQualification()">Add
+                                Qualification
+                            </button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </h2>
+            <div class="viewingArea" ng-click="recentQuali(selectedEmployee.id)">
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>{{selectedEmployee.recentQualification.course}}</b></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>{{selectedEmployee.recentQualification.startDate
+                    | date: 'MMMM yyyy'}} - {{selectedEmployee.recentQualification.endDate | date: 'MMMM yyyy'}}
+                </h6>
+                <div class="ptext"><p style="float:right;">Click to view more.....</p></div>
+            </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i class="fa fa-id-card-o fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Emergency
+                Contact <i style="float: right;" class="fa fa-pencil-square-o"></i> <i class="fa fa-plus"
+                                                                                       style="float: right; margin-right: 30px;"></i>
+            </h2>
+            <table>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Name: </b></h5></b></th>
+                    <td>{{selectedEmployee.emergencyContact.name}}</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Relation: </b></h5></th>
+                    <td>{{selectedEmployee.emergencyContact.relation}}</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Contact Number: </b></h5></th>
+                    <td>{{selectedEmployee.emergencyContact.contactNumber}}</td>
+                </tr>
+                <tr>
+                    <th><h5 class="w3-opacity"><b>Email: </b></h5></th>
+                    <td>{{selectedEmployee.emergencyContact.email}}</td>
+                </tr>
+            </table>
+        </div>
+        <br>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i class="fa fa-street-view fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Training
+                Records <i style="float: right;" class="fa fa-pencil-square-o"></i> <i class="fa fa-plus"
+                                                                                       style="float: right; margin-right: 30px;"></i>
+            </h2>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>Personality Development</b></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 Jan - 2017 Jan
+                </h6>
+                <p>eSewa</p>
+            </div>
+        </div>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i class="fa fa-plane fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Leave
+                Records<i style="float: right;" class="fa fa-pencil-square-o"></i></h2>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>Sick Leave</b></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 Jan - 2017 Jan</h6>
+                <p>Remaining Days: 2</p>
+            </div>
+        </div>
+
+        <div class="w3-container w3-card-2 w3-white w3-margin-bottom">
+            <h2 class="w3-text-grey"><i class="fa fa-industry fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Work
+                History <i style="float: right;" class="fa fa-pencil-square-o"></i> <i class="fa fa-plus"
+                                                                                       style="float: right; margin-right: 30px;"></i>
+            </h2>
+            <div class="w3-container">
+                <h5 class="w3-opacity"><b>ABC Company</b></h5>
+                <h6 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i>2016 Jan - 2017 Jan</h6>
+            </div>
+        </div>
+    </div>
+    <!-- End Grid -->
+</div>

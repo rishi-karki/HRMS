@@ -1,0 +1,18 @@
+<div class="row">
+    <div>
+        <h1 class="well well-sm" style="margin-top: 30px;" align="center">Add Employee</h1>
+    </div>
+</div>
+<div>
+<div class="addEmployeeNav">
+    <ul class="nav nav-tabs">
+        <li role="presentation" ng-class="{'active': state.getCurrentState() ==='addEmployee.generalDetails'}"><a ui-sref="addEmployee.generalDetails()" > General Details</a></li>
+        <li role="presentation"  ng-class="{'active': state.getCurrentState() ==='addEmployee.permanentAddress'}"><a ui-sref="addEmployee.permanentAddress()" >Permanent Address</a></li>
+        <li role="presentation" ng-class="{'active': state.getCurrentState() ==='addEmployee.temporaryAddress'}"><a ui-sref="addEmployee.temporaryAddress()" >Temporary Address</a></li>
+        <li role="presentation" ng-class="{'active': state.getCurrentState() ==='addEmployee.confirmation'}"><a ui-sref="addEmployee.confirmation()" >Confirmation</a></li>
+    </ul>
+</div>
+<div style="margin-top:10px;">
+    <ui-view />
+</div>
+</div>

@@ -1,0 +1,39 @@
+<!--Author: Rishi-->
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">Add Emergency Contact for {{selectedEmployee.fname}} {{selectedEmployee.lname}}</h1>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <form name="theForm">
+            <div class="form-group">
+                <label>Employee Name</label>
+                <input type="text" class="form-control" value="{{selectedEmployee.fname}} {{selectedEmployee.lname}}" disabled required>
+            </div>
+            <div class="form-group">
+                <label for="contactnum">Contact Name</label>
+                <input type="text" class="form-control" id="contactname" placeholder="Name of the emergency contact" name="contactname" ng-model="cname" required>
+            </div>
+            <div class="form-group">
+                <label>Relation</label>
+                <input type="text" class="form-control" ng-disabled="theForm.contactname.$invalid" ng-model='rel' name='relation' placeholder="Relation with {{cname}}" list="relations" required>
+                <datalist id="relations">
+                    <option ng-repeat="x in relations" value="{{x}}">
+                </datalist>
+            </div>
+            <div class="form-group">
+                <label for="contactnum">Contact Number</label>
+                <input type="number" class="form-control" id="contactnum" ng-disabled="theForm.contactname.$invalid" placeholder="Contact number of {{cname}}" name="contactnum" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" ng-disabled="theForm.contactname.$invalid"
+                       placeholder="Email id of {{cname}}" name="email">
+            </div>
+            <div style="margin-left: 10px;">
+                <input type="submit" value="Add Emergency Contact" class="btn" ng-disabled="theForm.$invalid">
+            </div>
+        </form>
+    </div>
+</div>

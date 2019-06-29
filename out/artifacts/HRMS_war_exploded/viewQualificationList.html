@@ -1,0 +1,42 @@
+<style>
+    input{
+        width:100%;
+    }
+</style>
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">View Qualifications List</h1>
+        </div>
+    </div>
+    <div>
+        <table ng-table="tableParams" class="table table-bordered table-stripped" show-filter="true">
+            <tr ng-repeat="qualification in $data">
+                <td title="'Level'" filter="{ level: 'text'}" sortable="'level'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.level}}</span>
+                    <input type="text" ng-model="qualification.level" placeholder="{{qualification.level}}" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+                <td title="'Course'" filter="{ course: 'text'}" sortable="'course'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.course}}</span>
+                    <input type="text" ng-model="qualification.course" placeholder="{{qualification.course}}" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+                <td title="'University'" filter="{ university: 'text'}" sortable="'university'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.university}}</span>
+                    <input type="text" ng-model="qualification.university" placeholder="{{qualification.university}}" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+                <td title="'Grade/Percentage'" filter="{ grade: 'text'}" sortable="'grade'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.grade}}</span>
+                    <input type="text" ng-model="qualification.grade" placeholder="{{qualification.grade}}" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+                <td title="'Start Date'" filter="{ Sdate: 'text'}" sortable="'Sdate'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.startDate}}</span>
+                    <input type="date" ng-model="qualification.startDate" ng-value="qualification.startDate | date:'yyyy-MM-dd'" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+                <td title="'End Date'" filter="{ Edate: 'text'}" sortable="'Edate'">
+                    <span ng-if="qualification.editable == false" ng-dblclick="enableEdit(qualification)">{{qualification.endDate}}</span>
+                    <input type="date" ng-model="qualification.endDate" ng-value="qualification.endDate | date:'yyyy-MM-dd'" ng-if="qualification.editable == true" ng-blur="disableEdit(qualification)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

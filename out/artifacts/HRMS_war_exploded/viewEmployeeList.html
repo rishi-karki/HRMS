@@ -1,0 +1,57 @@
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">View Employees</h1>
+        </div>
+    </div>
+    <div>
+        <table ng-table="tableParams" class="table table-bordered table-stripped" show-filter="true">
+            <tr ng-repeat="employee in $data">
+                <td title="'First Name'" filter="{ fname: 'text'}" sortable="'fname'">
+                    <span ng-if="employee.editable == false"
+                          ng-dblclick="enableEdit(employee)">{{employee.fname}}</span>
+                    <input type="text" ng-model="employee.fname" placeholder="{{employee.fname}}"
+                           ng-if="employee.editable == true" ng-blur="disableEdit(employee)"/>
+                </td>
+                <td title="'Last Name'" filter="{ lname: 'text'}" sortable="'lname'">
+                    <span ng-if="employee.editable == false"
+                          ng-dblclick="enableEdit(employee)">{{employee.lname}}</span>
+                    <input type="text" ng-model="employee.lname" placeholder="{{employee.lname}}"
+                           ng-if="employee.editable == true" ng-blur="disableEdit(employee)"/>
+                </td>
+                <td title="'Phone Number'" filter="{ phNumber: 'text'}" sortable="'phNumber'">
+                    <span ng-if="employee.editable == false"
+                          ng-dblclick="enableEdit(employee)">{{employee.phNumber}}</span>
+                    <input type="text" ng-model="employee.phNumber" placeholder="{{employee.phNumber}}"
+                           ng-if="employee.editable == true" ng-blur="disableEdit(employee)"/>
+                </td>
+                <td title="'Email Address'" filter="{ email: 'text'}" sortable="'email'">
+                    <span ng-if="employee.editable == false"
+                          ng-dblclick="enableEdit(employee)">{{employee.email}}</span>
+                    <input type="text" ng-model="employee.email" placeholder="{{employee.email}}"
+                           ng-if="employee.editable == true" ng-blur="disableEdit(employee)"/>
+                </td>
+
+                <td title="'Temporary Address'" filter="{ tempAddress: 'text'}" sortable="'tempAddress'">
+                    {{employee.tempAddress}}
+
+                </td>
+                <td title="Action">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="" class="dropdown-toggle" data-toggle="dropdown"><span
+                                    class="glyphicon glyphicon-tasks" style="color:black;"></span></a>
+                            <ul class="dropdown-menu" style="left:-116px;">
+                                <li><a href="" ng-click="viewProfile(employee)">Full Details</a></li>
+                                <li><a href="" ng-click="viewQualification(employee)">View Qualifications</a></li>
+                                <li><a href="" ng-click="addEmergencyContact(employee)">Add Emergency Contact</a></li>
+                                <lix class="divider"></lix  >
+                                <li><a href="#">Terminate</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

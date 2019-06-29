@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+
+<html>
+<head>
+    <title>HRMS</title>
+    <meta name="viewport" content="user-scalable = no">
+    <link rel="shortcut icon" href="http://tb-il.com/images/hrms_icon.png" type="image/x-icon"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.2/restangular.js"></script>
+    <script type="text/javascript" src="js/indexController.js"></script>
+    <script type="text/javascript" src="js/customServices.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+
+<body ng-app="loginApp">
+<div class="wrapper" ng-controller="indexController">
+    <div class="pen-title">
+        <h1>Human Resource Management System</h1><span>A single Solution to all Human Resources Problem. </span>
+    </div>
+
+    <!-- Form Module-->
+
+    <div class="module form-module">
+        <div class="form">
+            <h2>Admin Login</h2>
+            <form name="loginForm">
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-user"></i>
+                    <input type="text" placeholder="Username" ng-model="uname" class="form-control" />
+                </div>
+
+                <div class="inner-addon right-addon">
+                    <i class="glyphicon glyphicon-lock"></i>
+                    <input type="password" placeholder="Password" ng-model="pword" required class="form-control"/>
+                </div>
+                <input type="submit" ng-disabled="loginForm.$invalid" class="button" value="Submit"
+                       ng-click="submit()"/>
+                <span id="incorrect" class="errormsg" ng-if="incorrect">
+                     Invalid username or password.
+                </span>
+            </form>
+        </div>
+
+        <div class="cta"><a href="" onclick="alert('Contact Developers')">Forgot your password?</a></div>
+    </div>
+</div>
+<img src="esewa-logo.png" alt="eSewa Fonepay" style="width:200px;height:100px;">
+</body>
+</html>
+

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <!--Login Checking Servlet-->
+    <servlet>
+        <servlet-name>Servlet</servlet-name>
+        <servlet-class>Servlet.newServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet</servlet-name>
+        <url-pattern>/Servlet</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to obtain address from database-->
+    <servlet>
+        <servlet-name>AddressServlet</servlet-name>
+        <servlet-class>Servlet.getAddressServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddressServlet</servlet-name>
+        <url-pattern>/AddressServlet</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to insert employee data-->
+    <servlet>
+        <servlet-name>InsertEmployeeData</servlet-name>
+        <servlet-class>Servlet.InsertEmployeeData</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertEmployeeData</servlet-name>
+        <url-pattern>/InsertEmployeeData</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to get employee data-->
+    <servlet>
+        <servlet-name>RetrieveEmployee</servlet-name>
+        <servlet-class>Servlet.RetrieveEmployee</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveEmployee</servlet-name>
+        <url-pattern>/RetrieveEmployee</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to insert interview details-->
+    <servlet>
+        <servlet-name>InsertInterviewDetails</servlet-name>
+        <servlet-class>Servlet.InsertInterviewDetails</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertInterviewDetails</servlet-name>
+        <url-pattern>/InsertInterviewDetails</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to update employee details-->
+    <servlet>
+        <servlet-name>UpdateEmployeeTable</servlet-name>
+        <servlet-class>Servlet.UpdateEmployeeTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateEmployeeTable</servlet-name>
+        <url-pattern>/UpdateEmployeeTable</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to get interview details-->
+    <servlet>
+        <servlet-name>RetrieveInterview</servlet-name>
+        <servlet-class>Servlet.RetrieveInterview</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveInterview</servlet-name>
+        <url-pattern>/RetrieveInterview</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to update interview details-->
+    <servlet>
+        <servlet-name>UpdateInterviewTable</servlet-name>
+        <servlet-class>Servlet.UpdateInterviewTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateInterviewTable</servlet-name>
+        <url-pattern>/UpdateInterviewTable</url-pattern>
+    </servlet-mapping>
+    
+    <!--Servlet to insert department-->
+    <servlet>
+        <servlet-name>InsertDepartment</servlet-name>
+        <servlet-class>Servlet.InsertDepartment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertDepartment</servlet-name>
+        <url-pattern>/InsertDepartment</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to retrieve department-->
+    <servlet>
+        <servlet-name>RetrieveDepartment</servlet-name>
+        <servlet-class>Servlet.RetrieveDepartment</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveDepartment</servlet-name>
+        <url-pattern>/RetrieveDepartment</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to update department-->
+    <servlet>
+        <servlet-name>UpdateDepartmentTable</servlet-name>
+        <servlet-class>Servlet.UpdateDepartmentTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateDepartmentTable</servlet-name>
+        <url-pattern>/UpdateDepartmentTable</url-pattern>
+    </servlet-mapping>
+    
+    <!--Servlet to obtain employee data into dropdown in add department section-->
+    <servlet>
+        <servlet-name>RetrieveEmp</servlet-name>
+        <servlet-class>Servlet.RetrieveEmp</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveEmp</servlet-name>
+        <url-pattern>/RetrieveEmp</url-pattern>
+    </servlet-mapping>
+    
+    <!--Servlet to obtain emergency contact info-->
+    <servlet>
+        <servlet-name>RetrieveEmergencyContactInfo</servlet-name>
+        <servlet-class>Servlet.RetrieveEmergencyContactInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveEmergencyContactInfo</servlet-name>
+        <url-pattern>/RetrieveEmergencyContactInfo</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to insert qualification-->
+    <servlet>
+        <servlet-name>InsertQualification</servlet-name>
+        <servlet-class>Servlet.InsertQualification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>InsertQualification</servlet-name>
+        <url-pattern>/InsertQualification</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to obtain qualification data of x employee-->
+    <servlet>
+        <servlet-name>RetrieveQualification</servlet-name>
+        <servlet-class>Servlet.RetrieveQualification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveQualification</servlet-name>
+        <url-pattern>/RetrieveQualification</url-pattern>
+    </servlet-mapping>
+
+    <!--Servlet to obtain recent qualification of x employee-->
+    <servlet>
+        <servlet-name>RetrieveRecentQualification</servlet-name>
+        <servlet-class>Servlet.RetrieveRecentQualification</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RetrieveRecentQualification</servlet-name>
+        <url-pattern>/RetrieveRecentQualification</url-pattern>
+    </servlet-mapping>
+    
+    <!--Servlet to update qualification-->
+    <servlet>
+        <servlet-name>UpdateQualificationTable</servlet-name>
+        <servlet-class>Servlet.UpdateQualificationTable</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateQualificationTable</servlet-name>
+        <url-pattern>/UpdateQualificationTable</url-pattern>
+    </servlet-mapping>
+</web-app>

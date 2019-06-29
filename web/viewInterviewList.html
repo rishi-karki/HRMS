@@ -1,0 +1,50 @@
+<style>
+    input{
+        width:100%;
+    }
+</style>
+<div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="well well-sm" style="margin-top: 30px;" align="center">View Interview Schedule</h1>
+        </div>
+    </div>
+    <div>
+        <table ng-table="tableParams" class="table table-bordered table-stripped" show-filter="true">
+            <tr ng-repeat="interview in $data">
+                <td title="'Interviewee Name'" filter="{ intervieweeName: 'text'}" sortable="'intervieweeName'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.intervieweeName}}</span>
+                    <input type="text" ng-model="interview.intervieweeName" placeholder="{{interview.intervieweeName}}" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Interviewer Name'" filter="{ interviewerName: 'text'}" sortable="'name'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.interviewerName}}</span>
+                    <input type="text" ng-model="interview.interviewerName" placeholder="{{interview.interviewerName}}" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Interview Date'" filter="{ date: 'text'}" sortable="'date'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.date}}</span>
+                    <input type="date" ng-model="interview.date" ng-value="interview.date | date:'yyyy-MM-dd'" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Interview Time'" filter="{ time: 'text'}" sortable="'time'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.time}}</span>
+                    <input type="time" ng-model="interview.time" ng-value="interview.time" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Purpose'" filter="{ purpose: 'text'}" sortable="'purpose'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.purpose}}</span>
+                    <input type="text" ng-model="interview.purpose" placeholder="{{interview.purpose}}" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Email'" filter="{ email: 'text'}" sortable="'email'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.email}}</span>
+                    <input type="email" ng-model="interview.email" placeholder="{{interview.email}}" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Phone'" filter="{ phone: 'text'}" sortable="'phone'">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.phone}}</span>
+                    <input type="text" ng-model="interview.phone" placeholder="{{interview.phone}}" ng-if="interview.editable == true" ng-blur="disableEdit(interview)" />
+                </td>
+                <td title="'Status'" filter="{ status: 'text'}" sortable="status">
+                    <span ng-if="interview.editable == false" ng-dblclick="enableEdit(interview)">{{interview.status}}</span>
+                    <input type="button" class="btn btn-danger" ng-model="interview.status" value="Change Status" ng-if="interview.editable == true" ng-click="disableEdit(interview)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
